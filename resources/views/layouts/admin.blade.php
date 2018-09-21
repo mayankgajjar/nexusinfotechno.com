@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Admin Panel</title>
+        <link rel="icon" href="{{ asset('public/fevicon.png') }}">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -132,7 +133,7 @@
                         <div style="border-top:1px solid rgba(69, 74, 84, 0.7)"></div>
                         <!--/down-->
                         <div class="down">	
-                            <a href=""><img src="{{ asset('public/theme/images/user.png') }}"></a>
+                            <a href=""><img src="{{ asset('public/theme/images/admin_logo.png') }}"></a>
                             <a href=""><span class=" name-caret">{{ Auth::user()->name }}</span></a>
                         </div>
                         <!--//down-->
@@ -141,7 +142,7 @@
                                 <li><a href="{{route('home')}}"><i class="fa fa-tachometer"></i> <span>Dashboard</span></a></li>
                                 <li id="menu-academico" ><a href="#"><i class="fa fa-table"></i> <span> Home Page</span> <span class="fa fa-angle-right" style="float: right"></span></a>
                                     <ul id="menu-academico-sub" >
-                                        <!--<li><a href="{{route('Slider.index')}}"><i class="fa fa-camera"></i> <span>Front Slider</span></a></li>-->
+                                        <li><a href="{{route('Slider.index')}}"><i class="fa fa-camera"></i> <span>Front Slider</span></a></li>
                                         <li><a href="{{route('latest_work.index')}}"><i class="fa fa-bullhorn"></i> <span>Latest Work</span></a></li>
                                         <li><a href="{{route('testimonial.index')}}"><i class="fa fa-comments-o"></i> <span>Testimonial</span></a></li>
                                         <li><a href="{{route('happyclient.index')}}"><i class="fa fa-flag-checkered"></i> <span>Happy Clinets</span></a></li>

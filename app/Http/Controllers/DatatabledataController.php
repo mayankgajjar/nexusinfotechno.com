@@ -218,11 +218,12 @@ class DatatabledataController extends Controller
     public function getblog() {
         DB::statement(DB::raw('set @rownum=0'));
         
-        $blog = Blog::select([DB::raw('@rownum  := @rownum  + 1 AS rownum'),'blog.id', 'blog.blog_title','categorys.category_title','blog.show_front'])
-                ->join('categorys', 'categorys.id', '=', 'blog.blog_category')
-                ->where('blog.is_delete', 'N')
-                ->orderBy('blog.created_at', 'dese')
-                ->get();
+        //$blog = Blog::select([DB::raw('@rownum  := @rownum  + 1 AS rownum'),'blog.id', 'blog.blog_title','categorys.category_title','blog.show_front'])
+                //->join('blog_category', 'blog_category.id', '=', 'blog.blog_category')
+        $blog = Blog::select([DB::raw('@rownum  := @rownum  + 1 AS rownum'),'blog.id', 'blog.blog_title','blog.show_front','blog.blog_category'])
+            ->where('blog.is_delete', 'N')
+            ->orderBy('blog.created_at', 'dese')
+            ->get();
         
         return Datatables::of($blog)
             ->addColumn('action', function ($blog) {

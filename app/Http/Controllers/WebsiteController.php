@@ -38,7 +38,7 @@ class WebsiteController extends Controller
                 ->orderBy('page_order', 'asc')
                 ->get();
        
-        $slider = Slider::select(['id', 'slider_title', 'slider_content', 'slider_image'])
+        $slider = Slider::select(['id', 'slider_title', 'slider_content', 'slider_image','slider_url'])
                 ->where('is_delete', 'N')
                 ->where('show_front', 'Y')
                 ->orderBy('created_at', 'dese')
@@ -83,7 +83,7 @@ class WebsiteController extends Controller
     }
     
     public function about(){
-        $title = "About us";
+        $title = "About us || Nexus Infotechno";
         $keywords = '';
         $description = 'Web Development Company In India – Nexus InfoTechno  is leading Website Design and Development Company Located In Surat. We are offer best IT services Like mobile app development and digital marketing';
         
@@ -108,7 +108,7 @@ class WebsiteController extends Controller
     }
     
     public function service() {
-        $title = "Service";
+        $title = "Service || Nexus Infotechno";
         $keywords = 'Mobile App Development Company In India, Mobile App Developers, Web App Development Company In India';
         $description = 'Mobile App Development Company In India -  Nexus InfoTechno  Mobile App Developers have been providing best Mobile App Development services llike Android & IOS from india.';
         
@@ -140,7 +140,7 @@ class WebsiteController extends Controller
     }
     
     public function contact() {
-        $title = "Contact us";
+        $title = "Contact us || Nexus Infotechno";
         $keywords = 'Mobile App Development Company In India, Mobile App Developers, Web App Development Company In India';
         $description = 'Web Development Company In India – Nexus InfoTechno  is leading Website Design and Development Company Located In Surat. We are offer best IT services Like mobile app development and digital marketing';
         
@@ -193,7 +193,7 @@ class WebsiteController extends Controller
     }
     
     public function blogs() {
-        $title = "Blogs";
+        $title = "Blogs || Nexus Infotechno";
         $keywords = 'Mobile App Development Company In India, Mobile App Developers, Web App Development Company In India';
         $description = 'Web Development Company In India – Nexus InfoTechno  is leading Website Design and Development Company Located In Surat. We are offer best IT services Like mobile app development and digital marketing';
         
@@ -209,8 +209,7 @@ class WebsiteController extends Controller
                 ->orderBy('page_order', 'asc')
                 ->get();
         
-        $blog = Blog::select(['blog.id', 'blog.blog_title', 'blog.blog_category','blog_category.category_title','blog.blog_image','blog.blog_content','blog.blog_slug','blog.blog_video','blog.created_at','blog.blog_paragraph1'])
-                ->join('blog_category', 'blog_category.id', '=', 'blog.blog_category')
+        $blog = Blog::select(['blog.id', 'blog.blog_title', 'blog.blog_category','blog.blog_category','blog.blog_image','blog.blog_content','blog.blog_slug','blog.blog_video','blog.created_at'])
                 ->where('blog.is_delete', 'N')
                 ->where('blog.show_front', 'Y')
                 ->orderBy('blog.created_at', 'dese')
@@ -222,8 +221,7 @@ class WebsiteController extends Controller
                 ->orderBy('id', 'ASC')
                 ->get();
         
-        $recent_blog = Blog::select(['blog.id', 'blog.blog_title', 'blog.blog_category','blog_category.category_title','blog.blog_image','blog.blog_content','blog.blog_slug','blog.blog_video','blog.created_at','blog.blog_paragraph1'])
-                ->join('blog_category', 'blog_category.id', '=', 'blog.blog_category')
+        $recent_blog = Blog::select(['blog.id', 'blog.blog_title', 'blog.blog_category','blog.blog_category','blog.blog_image','blog.blog_content','blog.blog_slug','blog.blog_video','blog.created_at'])
                 ->where('blog.is_delete', 'N')
                 ->where('blog.show_front', 'Y')
                 ->orderBy('blog.created_at', 'dese')
@@ -234,7 +232,14 @@ class WebsiteController extends Controller
     }
     
     public function blogshow($cat,$id) {
-        $title = "Show Blog";
+        
+        $blog = Blog::select(['blog.*'])
+                ->where('blog.is_delete', 'N')
+                ->where('blog.show_front', 'Y')
+                ->where('blog.blog_slug', $id)
+                ->first();
+        
+        $title = $blog->blog_title;
         $keywords = 'Mobile App Development Company In India, Mobile App Developers, Web App Development Company In India';
         $description = 'Web Development Company In India – Nexus InfoTechno  is leading Website Design and Development Company Located In Surat. We are offer best IT services Like mobile app development and digital marketing';
         
@@ -250,12 +255,7 @@ class WebsiteController extends Controller
                 ->orderBy('page_order', 'asc')
                 ->get();
         
-        $blog = Blog::select(['blog_category.category_title', 'blog.*'])
-                ->join('blog_category', 'blog_category.id', '=', 'blog.blog_category')
-                ->where('blog.is_delete', 'N')
-                ->where('blog.show_front', 'Y')
-                ->where('blog.blog_slug', $id)
-                ->first();
+        
         
         return view('website.showblog',compact('title','blog','keywords','description','service_menu','sub_service_menu'));
         

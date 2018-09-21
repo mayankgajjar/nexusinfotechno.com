@@ -34,6 +34,10 @@
                         <div class="col-sm-4">
                             <textarea class="form-control" rows="5" id="comment" name="slider_content"></textarea>
                         </div>
+                        <label  class="col-sm-2"><strong>Slider URL</strong></label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="slider_url" name="slider_url">
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2"><strong>Photo</strong></label>

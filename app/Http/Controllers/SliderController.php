@@ -42,7 +42,7 @@ class SliderController extends Controller
         ]);
         
         $image = $request->file('image');
-        $imageName = time().'.'.$request->image->getClientOriginalExtension();           
+        $imageName = $request->image->getClientOriginalName();    
         $request->image->move(public_path('custom_image/slieder_images'), $imageName);
         
         $Slider = new Slider([
@@ -50,6 +50,7 @@ class SliderController extends Controller
             'slider_image' => $imageName,
             'slider_content' => $request->get('slider_content'),
             'show_front' => $request->get('show_front'),
+            'slider_url' => $request->get('slider_url'),
         ]);
 
         $Slider->save();
@@ -98,7 +99,7 @@ class SliderController extends Controller
         {
             unlink(public_path('custom_image/slieder_images/'.$Slider->slider_image));
             $image = $request->file('image');
-            $imageName = time().'.'.$request->image->getClientOriginalExtension();           
+            $imageName = $request->image->getClientOriginalName();
             $request->image->move(public_path('custom_image/slieder_images'), $imageName);
         } else {
             $imageName = $Slider->slider_image;
@@ -108,6 +109,7 @@ class SliderController extends Controller
         $Slider->slider_image = $imageName;
         $Slider->slider_content = $request->get('slider_content');
         $Slider->show_front = $request->get('show_front');
+        $Slider->slider_url = $request->get('slider_url');
         
         $Slider->save();
         return redirect('/Slider')->with('message', 'Slider update successful!');

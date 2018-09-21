@@ -25,28 +25,10 @@
                             <input type="text" class="form-control" id="blog_title" name="blog_title" value="{{$blog['blog_title']}}">
                         </div>
                     </div>
-                    <!--<div class="form-group">
+                    <div class="form-group">
                         <label  class="col-sm-2"><strong>Blog Content</strong></label>
                         <div class="col-sm-8">
-                            <textarea class="form-control" rows="5" id="blog_content" name="blog_content">{{$blog['blog_content']}}</textarea>
-                        </div>
-                    </div>-->
-                    <div class="form-group">
-                        <label  class="col-sm-2"><strong>Blog Content 1</strong></label>
-                        <div class="col-sm-8">
-                            <textarea class="form-control" rows="5" id="blog_paragraph1" name="blog_paragraph1">{{$blog['blog_paragraph1']}}</textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label  class="col-sm-2"><strong>Blog Content 2</strong></label>
-                        <div class="col-sm-8">
-                            <textarea class="form-control" rows="5" id="blog_paragraph2" name="blog_paragraph2">{{$blog['blog_paragraph2']}}</textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label  class="col-sm-2"><strong>Blog Content 3</strong></label>
-                        <div class="col-sm-8">
-                            <textarea class="form-control" rows="5" id="blog_paragraph3" name="blog_paragraph3">{{$blog['blog_paragraph3']}}</textarea>
+                            <textarea class="form-control" rows="5" id="elm1" name="blog_content">{{$blog['blog_content']}}</textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -55,7 +37,7 @@
                             <?php $cat_array = explode(",",$blog['blog_category']); ?>
                             <?php foreach ($category as $cat){ ?>
                                 <label class="checkbox-inline">
-                                    <input type="checkbox" value="{{$cat['id']}}" name="blog_category[]" <?php if (in_array($cat['id'], $cat_array)){ echo 'checked'; } ?>>{{$cat['category_title']}}
+                                    <input type="checkbox" value="{{$cat['category_title']}}" name="blog_category[]" <?php if (in_array($cat['category_title'], $cat_array)){ echo 'checked'; } ?>>{{$cat['category_title']}}
                                 </label>
                             <?php } ?>
                             <!--<select name="blog_category" id="blog_category" class="form-control">
@@ -108,14 +90,6 @@
 </div>
 <script>
 $(document).ready(function () {
-    
-    CKEDITOR.replace( 'blog_content' );
-    
-    function updateAllMessageForms() {
-        for (instance in CKEDITOR.instances) {
-                CKEDITOR.instances[instance].updateElement();
-        }
-    }
 
     $('#portfolio-form').validate({ // initialize the plugin
         rules: {

@@ -1,0 +1,7 @@
+User-Agent: *
+Disallow: /login
+Disallow: /about.php
+Disallow: /blog/space-shouldnt-be-the-final-frontier
+Disallow: /service/ios-development
+
+Sitemap: http://nexusinfotechno.com/sitemap.xml

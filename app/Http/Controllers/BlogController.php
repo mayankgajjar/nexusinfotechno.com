@@ -42,7 +42,7 @@ class BlogController extends Controller
         $title =  $request->get('blog_title');
         $this->validate($request, [
             'blog_title' => 'required|unique:blog,blog_title,'.$title,
-            'blog_paragraph1' => 'required',
+            'blog_content' => 'required',
             'blog_category' => 'required',
         ]);
         
@@ -66,10 +66,7 @@ class BlogController extends Controller
         $blog = new Blog([
             'blog_title' => $request->get('blog_title'),
             'blog_image' => $imageName,
-            //'blog_content' => $request->get('blog_content'),
-            'blog_paragraph1' => $request->get('blog_paragraph1'),
-            'blog_paragraph2' => $request->get('blog_paragraph2'),
-            'blog_paragraph3' => $request->get('blog_paragraph3'),
+            'blog_content' => $request->get('blog_content'),
             'blog_category' => $categoryList,
             'blog_video' => $videoName,
             'show_front' => $request->get('show_front'),
@@ -121,7 +118,7 @@ class BlogController extends Controller
         $this->validate($request, [
             //'blog_title' => 'required|unique:blog,blog_title,'.$title,Rule::unique('blog', 'blog_title')->whereNot('id', $id),
             'blog_title' => [ 'required', 'string', 'max:255', Rule::unique('blog', 'blog_title')->whereNot('id', $id)],
-            'blog_paragraph1' => 'required',
+            'blog_content' => 'required',
             'blog_category' => 'required',
         ]);
         
@@ -144,10 +141,7 @@ class BlogController extends Controller
         $categoryList = implode(',', $request->get('blog_category'));
         $blog->blog_title = $request->get('blog_title');
         $blog->blog_image = $imageName;
-        //$blog->blog_content = $request->get('blog_content');
-        $blog->blog_paragraph1 = $request->get('blog_paragraph1');
-        $blog->blog_paragraph2 = $request->get('blog_paragraph2');
-        $blog->blog_paragraph3 = $request->get('blog_paragraph3');
+        $blog->blog_content = $request->get('blog_content');
         $blog->blog_category = $categoryList;
         $blog->blog_video = $videoName;
         $blog->show_front = $request->get('show_front');
@@ -167,13 +161,12 @@ class BlogController extends Controller
     {
         $blog = Blog::findOrFail($id);
         if($blog->blog_image != ''){
-            unlink(public_path('custom_image/blog/image/'.$blog->portfolio_image));
+            unlink(public_path('custom_image/blog/image/'.$blog->blog_image));
         }
         if($blog->blog_video != ''){
             unlink(public_path('custom_image/blog/video/'.$blog->blog_video));
         }
-        $blog->is_delete = 'Y';
-        $blog->save();
+        $blog->delete();
         return redirect('/blogs')->with('message', 'Blog Delete successful!');
     }
 }

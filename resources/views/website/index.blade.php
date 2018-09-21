@@ -6,21 +6,14 @@
 ==================================================
 Slider Section Start
 ================================================== -->
-
+<!--
 <div class="slider">
   <div class="tp-banner-container">
         <div class="tp-banner" >
-            <ul>    <!-- SLIDE  -->
-                
-
-
-                <!-- SLIDE 1 -->
+            <ul> 
                 <li data-transition="zoomout" data-slotamount="7" data-masterspeed="1000" >
-                    <!-- MAIN IMAGE -->
+                    
                     <img src="{{ asset('public/website/images/WEB-BG-01.jpg') }}"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
-                    <!-- LAYERS -->
-
-                    <!-- LAYER NR. 1 -->
                     <div class="tp-caption customin"
                         data-x="90"
                         data-y="261"
@@ -32,8 +25,6 @@ Slider Section Start
                         style="z-index: 5"><img src="{{ asset('public/website/images/MMobile-01.png') }}" alt="">
                     </div>
                     
-
-                    <!-- LAYER NR. 2 -->
                     <div class="tp-caption customin"
                         data-x="245"
                         data-y="112"
@@ -46,8 +37,6 @@ Slider Section Start
                     </div>
                     
                     
-
-                    <!-- LAYER NR. 3 -->
                     <div class="tp-caption customin"
                         data-x="594"
                         data-y="139"
@@ -69,10 +58,6 @@ Slider Section Start
                         style="z-index: 2"><img src="{{ asset('public/website/images/WEB-01.png') }}" alt="">
                     </div>
 
-                    <!-- LAYER NR. 4 -->
-                    
-
-                    <!-- LAYER NR. 5 -->
                     <div class="tp-caption medium_ skewfromleft customout"
                         data-x="136"
                         data-y="244"
@@ -86,7 +71,6 @@ Slider Section Start
                         style="z-index: 6">App Devlopment
                     </div>
 
-                    <!-- LAYER NR. 6 -->
                     <div class="tp-caption medium_ skewfromright customout"
                         data-x="660"
                         data-y="194"
@@ -100,7 +84,7 @@ Slider Section Start
                         style="z-index: 7">Business Ideas
                     </div>
 
-                    <!-- LAYER NR. 7 -->
+                    
                     <div class="tp-caption medium_ skewfromright customout"
                         data-x="950"
                         data-y="396"
@@ -114,7 +98,6 @@ Slider Section Start
                         style="z-index: 8">Web Development
                     </div>
 
-                    <!-- LAYER NR. 8 -->
                     <div class="tp-caption medium_ skewfromleft customout"
                         data-x="468"
                         data-y="443"
@@ -130,13 +113,13 @@ Slider Section Start
                         
                     </div>
                 </li>
-                <!-- SLIDE 2 -->
+               
                 <li data-transition="zoomout" data-slotamount="7" data-masterspeed="1000" >
-                    <!-- MAIN IMAGE -->
+                    
                     <img src="{{ asset('public/website/images/WEB-SLIDE-02.png') }}"  alt="darkblurbg"  data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
-                    <!-- LAYERS -->
+                    
 
-                    <!-- LAYER NR. 1 -->
+                    
                     <div class="tp-caption customin"
                         data-x="90"
                         data-y="161"
@@ -149,8 +132,6 @@ Slider Section Start
                     </div>
 
                     
-
-                    <!-- LAYER NR. 7 -->
                     <div class="tp-caption medium_thin_grey bold-tit medium_ skewfromright customout"
                         data-x="645"
                         data-y="196"
@@ -196,7 +177,56 @@ Slider Section Start
             <div class="tp-bannertimer"></div>
         </div>
     </div>
+</div> -->
+
+<div class="slider-html">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <?php foreach ($slider as $key => $value) { ?>
+                <li data-target="#myCarousel" data-slide-to="{{$key}}" class="<?php if($key == 0 ){echo 'active';} ?>"></li>
+            <?php } ?>
+        </ol>
+        <div class="carousel-inner">
+            <?php foreach ($slider as $key => $value) { ?>
+                <div class="item <?php if($key == 0 ){echo 'active';} ?>" >
+                    <a href="{{$value->slider_url}}"><img src="{{ URL::asset('public/custom_image/slieder_images/'.$value->slider_image) }}"  style="width:100%;"></a>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
 </div>
+
+<!--
+<div class="slider-html">
+    <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:1300px;height:500px;overflow:hidden;visibility:hidden;">
+       
+        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:1300px;height:500px;overflow:hidden;">
+            <div>
+                <img src="{{ URL::asset('public/custom_image/banners/slide-01.jpg') }}" style="width: 100%;"  alt="">
+            </div>
+            <div>
+                <img src="{{ URL::asset('public/custom_image/banners/slide-02.jpg') }}" style="width: 100%;"  alt="">
+            </div>
+            <div>
+                <img src="{{ URL::asset('public/custom_image/banners/slide-03.jpg') }}" style="width: 100%;"  alt="">
+            </div>
+            <div>
+                <img src="{{ URL::asset('public/custom_image/banners/slide-04.jpg') }}" style="width: 100%;"  alt="">
+            </div>
+        </div>
+       
+        <div data-u="arrowleft" class="jssora051" style="width:65px;height:65px;top:0px;left:25px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
+            <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                <polyline class="a" points="11040,1920 4960,8000 11040,14080 "></polyline>
+            </svg>
+        </div>
+        <div data-u="arrowright" class="jssora051" style="width:65px;height:65px;top:0px;right:25px;" data-autocenter="2" data-scale="0.75" data-scale-right="0.75">
+            <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                <polyline class="a" points="4960,1920 11040,8000 4960,14080 "></polyline>
+            </svg>
+        </div>
+    </div>
+</div>-->
 
 <!--/#main-slider-->
 

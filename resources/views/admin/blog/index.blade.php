@@ -36,7 +36,7 @@ $(document).ready(function() {
         "columns": [
             {data: 'rownum', name: 'rownum'},
             {data: 'blog_title', name: 'blog_title'},
-            {data: 'category_title', name: 'category_title'},
+            {data: 'blog_category', name: 'blog_category'},
             {data: 'show_front', name: 'show_front'},
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ]

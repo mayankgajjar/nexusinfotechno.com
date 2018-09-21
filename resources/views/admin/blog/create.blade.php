@@ -24,28 +24,10 @@
                             <input type="text" class="form-control" id="blog_title" name="blog_title">
                         </div>
                     </div>
-                    <!--<div class="form-group">
+                    <div class="form-group">
                         <label  class="col-sm-2"><strong>Blog Content</strong></label>
                         <div class="col-sm-8">
-                            <textarea class="form-control" rows="5" id="blog_content" name="blog_content"></textarea>
-                        </div>
-                    </div>-->
-                    <div class="form-group">
-                        <label  class="col-sm-2"><strong>Blog Content 1</strong></label>
-                        <div class="col-sm-8">
-                            <textarea class="form-control" rows="5" id="blog_paragraph1" name="blog_paragraph1"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label  class="col-sm-2"><strong>Blog Content 2</strong></label>
-                        <div class="col-sm-8">
-                            <textarea class="form-control" rows="5" id="blog_paragraph2" name="blog_paragraph2"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label  class="col-sm-2"><strong>Blog Content 3</strong></label>
-                        <div class="col-sm-8">
-                            <textarea class="form-control" rows="5" id="blog_paragraph3" name="blog_paragraph3"></textarea>
+                            <textarea class="form-control" rows="5" id="elm1" name="blog_content"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -53,15 +35,10 @@
                         <div class="col-sm-4">
                             <?php foreach ($category as $cat){ ?>
                                 <label class="checkbox-inline">
-                                    <input type="checkbox" value="{{$cat['id']}}" name="blog_category[]">{{$cat['category_title']}}
+                                    <input type="checkbox" value="{{$cat['category_title']}}" name="blog_category[]">{{$cat['category_title']}}
                                 </label>
                             <?php } ?>
-                            <!--<select name="blog_category" id="blog_category" class="form-control">
-                                <option value="">Select Category</option>
-                                @foreach($category as $cat)
-                                    <option value="{{$cat['id']}}">{{$cat['category_title']}}</option>
-                                @endforeach
-                            </select>-->
+
                         </div>
                     </div>
                     <div class="form-group">
@@ -103,7 +80,7 @@ $(document).ready(function () {
             blog_title: {
                 required: true,
             },
-            blog_paragraph1: {
+            blog_content: {
                 required: true,
             },
             blog_category: {
